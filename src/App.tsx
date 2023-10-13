@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import Expenses from "./components/Expenses";
 
 const App = () => {
-  useState({});
+  const [expenses, setExpenses] = useState({});
 
   return (
     <div>
-      <p></p>
+      <Expenses />
     </div>
   );
 };
