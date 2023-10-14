@@ -32,4 +32,6 @@ ____________
 ## What I've learned
 
 - The data type for 'date' is simply, just "Date". This is something I came across when setting up the 'Expense' interface.
-- 
+- However, more methods for the Date object (), new Date().toDateString() ... made life a LOT easier ... (less code, clean code...)
+
+- Brought in React-Hook-Form libary for storing form input data, conforming the data to the 'Expense' interface, which is the "shape" (type) of data that can be passed up to the parent component, via callback...
