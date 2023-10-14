@@ -1,20 +1,29 @@
 import { FormEvent } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Expense } from "./ExpenseList";
 
+type Inputs = {
+  date: string;
+  description: string;
+  location: string;
+  amount: string;
+};
 interface Props {
-  onSubmit: (d: FormEvent<HTMLElement>) => SubmitHandler<FieldValues>;
+  handleFormData: Expense;
 }
 
-function ExpenseForm({ onSubmit }: Props) {
-  const { register, handleSubmit, reset } =
-    useForm<SubmitHandler<FieldValues>>();
+function ExpenseForm({ handleFormData }: Props) {
+  const { register, handleSubmit, reset } = useForm<Inputs>();
+
+  const onFormSubmit: SubmitHandler<Inputs> = (d: FormEvent<HTMLElement>) =>
+    console.log(d);
 
   return (
     <div>
       <form
         className="expense-form"
         onSubmit={(data) => {
-          handleSubmit(onSubmit(data));
+          handleSubmit(onFormSubmit(data));
           reset();
         }}
       >
