@@ -1,16 +1,23 @@
-import { Expense } from "./ExpenseList";
-import { FieldValue, SubmitHandler, useForm } from "react-hook-form";
+import { FormEvent } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
-function ExpenseForm() {
-  const { register, handleSubmit, reset } = useForm();
-  const onSubmit = (d: SubmitHandler<FieldValue>) => {
-    console.log(d);
-    reset();
-  };
+interface Props {
+  onSubmit: (d: FormEvent<HTMLElement>) => SubmitHandler<FieldValues>;
+}
+
+function ExpenseForm({ onSubmit }: Props) {
+  const { register, handleSubmit, reset } =
+    useForm<SubmitHandler<FieldValues>>();
 
   return (
     <div>
-      <form className="expense-form" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="expense-form"
+        onSubmit={(data) => {
+          handleSubmit(onSubmit(data));
+          reset();
+        }}
+      >
         <div className="form-group mb-3">
           <label htmlFor="date" className="form-label">
             Date
