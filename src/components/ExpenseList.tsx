@@ -26,25 +26,24 @@ function ExpenseList({ expenses, handleDelete }: Props) {
         </thead>
 
         <tbody>
-          {expenses &&
-            expenses.map((expense) => {
-              return (
-                <tr key={expense.id}>
-                  <td>{expense.date}</td>
-                  <td>{expense.description}</td>
-                  <td>{expense.location}</td>
-                  <td>{expense.amount}</td>
-                  <td width="40px">
-                    <button
-                      onClick={() => handleDelete(expense.id)}
-                      className="btn btn-danger"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
+          {expenses.map((expense) => {
+            return (
+              <tr key={expense.id}>
+                <td>{expense.date}</td>
+                <td>{expense.description}</td>
+                <td>{expense.location}</td>
+                <td>{expense.amount}</td>
+                <td width="40px">
+                  <button
+                    onClick={() => handleDelete(expense.id)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
         <tfoot>
           <tr className="table-info">

@@ -1,31 +1,30 @@
-import { FormEvent } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Expense } from "./ExpenseList";
+import { useForm } from "react-hook-form";
 
 type Inputs = {
   date: string;
   description: string;
   location: string;
-  amount: string;
+  amount: number;
 };
 interface Props {
-  handleFormData: Expense;
+  handleFormData: (formData: Inputs) => void;
 }
 
 function ExpenseForm({ handleFormData }: Props) {
   const { register, handleSubmit, reset } = useForm<Inputs>();
 
-  const onFormSubmit: SubmitHandler<Inputs> = (d: FormEvent<HTMLElement>) =>
-    console.log(d);
-
   return (
     <div>
       <form
         className="expense-form"
-        onSubmit={(data) => {
-          handleSubmit(onFormSubmit(data));
-          reset();
-        }}
+        onSubmit={
+          handleSubmit((data) => {
+            console.log(data);
+            handleFormData(data);
+            reset();
+          })
+          // reset();
+        }
       >
         <div className="form-group mb-3">
           <label htmlFor="date" className="form-label">

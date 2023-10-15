@@ -23,7 +23,11 @@ const App = () => {
 
   return (
     <div>
-      <ExpenseForm />
+      <ExpenseForm
+        handleFormData={(data) =>
+          setExpenses([...expenses, { ...data, id: crypto.randomUUID() }])
+        }
+      />
       {expenses.length > 0 && (
         <ExpenseList
           expenses={expenses}
