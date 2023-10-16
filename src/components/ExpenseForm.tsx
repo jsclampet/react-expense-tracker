@@ -34,7 +34,7 @@ function ExpenseForm({ handleFormData }: Props) {
             type="date"
             id="date"
             className="form-control"
-            {...register("date")}
+            {...register("date", { required: true, valueAsDate: true })}
           />
         </div>
         <div className="form-group mb-3">
@@ -45,7 +45,7 @@ function ExpenseForm({ handleFormData }: Props) {
             type="text"
             id="description"
             className="form-control"
-            {...register("description")}
+            {...register("description", { required: true })}
           />
         </div>
         <div className="form-group mb-3">
@@ -56,7 +56,7 @@ function ExpenseForm({ handleFormData }: Props) {
             type="text"
             id="location"
             className="form-control"
-            {...register("location")}
+            {...register("location", { required: true })}
           />
         </div>
         <div className="form-group mb-3">
@@ -64,14 +64,14 @@ function ExpenseForm({ handleFormData }: Props) {
             Amount
           </label>
           <input
-            type="text"
+            type="number"
             id="amount"
             className="form-control"
-            {...register("amount")}
+            {...register("amount", { required: true, valueAsNumber: true })}
           />
         </div>
         <div className="break"></div>
-        <button className="btn btn-primary submit-btn" type="submit">
+        <button className="btn btn-primary btn-lg submit-btn" type="submit">
           Add Expense!
         </button>
       </form>

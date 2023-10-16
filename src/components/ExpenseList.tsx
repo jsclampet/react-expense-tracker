@@ -36,9 +36,9 @@ function ExpenseList({ expenses, handleDelete }: Props) {
                 <td width="40px">
                   <button
                     onClick={() => handleDelete(expense.id)}
-                    className="btn btn-danger"
+                    className="btn btn-outline-danger"
                   >
-                    Delete
+                    X
                   </button>
                 </td>
               </tr>
