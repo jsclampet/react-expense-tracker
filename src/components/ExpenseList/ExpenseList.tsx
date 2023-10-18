@@ -13,10 +13,10 @@ interface Props {
 
 function ExpenseList({ expenses, handleDelete }: Props) {
   return (
-    <div>
+    <div className="bg-subtle">
       <table className="table table-bordered">
         <thead>
-          <tr className="table-info">
+          <tr className="table-success">
             <th>Date</th>
             <th>Description</th>
             <th>Location</th>
@@ -46,7 +46,7 @@ function ExpenseList({ expenses, handleDelete }: Props) {
           })}
         </tbody>
         <tfoot>
-          <tr className="table-info">
+          <tr className="table-success">
             <td colSpan={3} className="table-footer-left">
               <strong>Total:</strong>
             </td>

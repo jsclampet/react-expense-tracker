@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
-import ExpenseList, { Expense } from "./components/ExpenseList";
+import ExpenseList, { Expense } from "./components/ExpenseList/ExpenseList";
 import "./App.css";
-import ExpenseForm from "./components/ExpenseForm";
+import ExpenseForm from "./components/ExpenseForm/ExpenseForm";
 import { format } from "date-fns";
 
 const App = () => {
-  const [expenses, setExpenses] = useState<Expense[]>([]);
+  const defaultExpenses = JSON.parse(
+    localStorage.getItem("storedExpenses") || "[]"
+  );
+
+  const [expenses, setExpenses] = useState<Expense[]>(defaultExpenses);
 
   useEffect(() => {
-    if (!expenses && localStorage.getItem("storedExpenses")) {
-      setExpenses(JSON.parse(localStorage.getItem("storedExpenses") as string));
-    }
-  }, []);
+    localStorage.setItem("storedExpenses", JSON.stringify(expenses));
+  }, [expenses]);
 
   return (
-    <div>
+    <div className="bg-dark">
       <h1 className="my-4 text-center">Expense Tracker App</h1>
       <ExpenseForm
         handleFormData={(data) => {
@@ -26,7 +28,6 @@ const App = () => {
               id: crypto.randomUUID(),
             },
           ]);
-          localStorage.setItem("storedExpenses", JSON.stringify(expenses));
         }}
       />
       {expenses.length > 0 && (

@@ -17,14 +17,10 @@ function ExpenseForm({ handleFormData }: Props) {
     <div>
       <form
         className="expense-form"
-        onSubmit={
-          handleSubmit((data) => {
-            console.log(data);
-            handleFormData(data);
-            reset();
-          })
-          // reset();
-        }
+        onSubmit={handleSubmit((data) => {
+          handleFormData(data);
+          reset();
+        })}
       >
         <div className="form-group mb-3">
           <label htmlFor="date" className="form-label">
@@ -33,7 +29,7 @@ function ExpenseForm({ handleFormData }: Props) {
           <input
             type="date"
             id="date"
-            className="form-control"
+            className="form-control bg-secondary text-light"
             {...register("date", { required: true, valueAsDate: true })}
           />
         </div>
@@ -44,7 +40,7 @@ function ExpenseForm({ handleFormData }: Props) {
           <input
             type="text"
             id="description"
-            className="form-control"
+            className="form-control bg-secondary text-light"
             {...register("description", { required: true })}
           />
         </div>
@@ -55,7 +51,7 @@ function ExpenseForm({ handleFormData }: Props) {
           <input
             type="text"
             id="location"
-            className="form-control"
+            className="form-control bg-secondary text-light"
             {...register("location", { required: true })}
           />
         </div>
@@ -66,12 +62,12 @@ function ExpenseForm({ handleFormData }: Props) {
           <input
             type="number"
             id="amount"
-            className="form-control"
+            className="form-control bg-secondary text-light"
             {...register("amount", { required: true, valueAsNumber: true })}
           />
         </div>
         <div className="break"></div>
-        <button className="btn btn-primary btn-lg submit-btn" type="submit">
+        <button className="btn btn-success btn-lg submit-btn" type="submit">
           Add Expense!
         </button>
       </form>
