@@ -4,4 +4,4 @@
 
 View it [here](https://expense-tracker-omega-navy.vercel.app/)
 
-![preview]()
+![preview](https://github.com/jsclampet/react-expense-tracker/blob/main/PREVIEW.png?raw=true)
