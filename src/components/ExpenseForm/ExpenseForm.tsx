@@ -63,6 +63,7 @@ function ExpenseForm({ handleFormData }: Props) {
             type="number"
             id="amount"
             className="form-control bg-secondary text-light"
+            step="any"
             {...register("amount", { required: true, valueAsNumber: true })}
           />
         </div>
